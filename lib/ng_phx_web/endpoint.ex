@@ -1,6 +1,16 @@
 defmodule NgPhxWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :ng_phx
 
+  def redirect_index(conn = %Plug.Conn{path_info: ["web"]}, _opts) do
+    %Plug.Conn{conn | path_info: ["web", "index.html"]}
+  end
+
+  def redirect_index(conn, _opts) do
+    conn
+  end
+
+  plug :redirect_index
+
   socket "/socket", NgPhxWeb.UserSocket
 
   # Serve at "/" the static files from "priv/static" directory.
