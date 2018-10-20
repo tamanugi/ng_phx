@@ -11,7 +11,9 @@ config :ng_phx, NgPhxWeb.Endpoint,
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
-  watchers: []
+  watchers: [
+    ng: ["build", "--watch", "--output-path=../priv/static/web", "--base-href=/web/", cd: Path.expand("../web/", __DIR__)]
+  ]
 
 # ## SSL Support
 #
